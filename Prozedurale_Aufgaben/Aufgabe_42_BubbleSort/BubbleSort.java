@@ -20,11 +20,20 @@ public class BubbleSort {
         array[j] = t;
     }
 
+    private static boolean isSorted(int[] array){
+        for (int i = 0; i < array.length-1; ++i){
+            if (array[i] > array[i+1]){
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static int bubbleSort(int[] array){
         int swapCount = 0;
         int N = array.length;
-        for (int i = N-2; i>=0; --i){
-            for (int j = i; j<N-1; ++j){
+        for (int i = N-1; i>=1; --i){
+            for (int j = 0; j<i; ++j){
                 if (array[j]>array[j+1]){
                     swap(array, j, j+1);
                     ++swapCount;
@@ -38,6 +47,9 @@ public class BubbleSort {
         int N = 10000;
         int[] array = randomArray(N);
         System.out.printf("%d Elemente zu sortieren benötigte %d Swaps.",N,bubbleSort(array));
+        if (!isSorted(array)){
+            System.err.println("Sortierung fehlgeschlagen!");
+        }
     }
 
 }
