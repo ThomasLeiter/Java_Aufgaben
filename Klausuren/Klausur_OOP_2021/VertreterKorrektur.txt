@@ -1,0 +1,33 @@
+Zeile 3: 
+extends Object ist unnötig
+
+Zeile 12: 
+UMSATZ sollte klein geschrieben werden
+
+Zeile 15: 
+Konstruktorname muss Klassenname entsprechen
+VertreterOO(){...};
+
+Zeile 34:
+Methode muss String zurückgeben.
+return erg;
+
+Zeile 44-48:
+Überprüfung auf sinnvolle Daten sollte vor Zuweisung geschehen.
+gehalt = gestalt; hinter if-Clause setzen.
+
+Zeile 56:
+Setter für final Field sollte private sein.
+anzVertreter sollte erhöht werden.
+
+Zeile 69:
+setName gibt sinnlosen int-Wert zurück.
+Entweder void-Methode oder Rückgabewert Vertreter oder String.
+
+Zeile 78:
+siehe Zeile 69
+
+Zeile 87:
+umsatz ist falsch geschrieben.
+siehe Zeile 69
+
