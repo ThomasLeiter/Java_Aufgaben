@@ -1,67 +1,43 @@
 package Prozedurale_Aufgaben.Aufgabe_43_Entfernungsmatrix;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Random;
 
 public class Entfernung {
-
-    static class Pair<U,V>{
-        U head;
-        V tail;
-        Pair(U u, V v){
-            head = u;
-            tail = v;
-        }
-        @Override
-        public String toString(){
-            return "(" + head + "," + tail + ")";
-        }
+    
+    static double distance(int x1, int y1, int x2, int y2){
+        return Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
     }
 
-    /**
-     * Calculates the cartesian product of two lists
-     * @param <U>
-     * @param <V>
-     * @param lhs
-     * @param rhs
-     * @return The list of all pairs (x,y) where x in lhs and y in rhs 
-     */
-    static <U,V> List<Pair<U,V>> cartesianProduct(List<U> lhs, List<V> rhs){
-        return lhs.stream()
-        .flatMap(x -> rhs.stream().map(y -> new Pair<>(x, y)))
-        .collect(Collectors.toList());
-    } 
+    public static void main(String[] args){
+        int N = 10;
+        int[] x = new int[N];
+        int[] y = new int[N];
+        var rand = new Random();
+        for (int i = 0; i < N; ++i){
+            x[i] = rand.nextInt(50) + 1;
+            y[i] = rand.nextInt(50) + 1;
+        }
 
-    /**
-     * Calculate the distance of a pair of cities (i.e. coordinate pairs)
-     * @param cityPair
-     * @return The Euclidian distance between the two cities 
-     */
-    static double distance(Pair<Pair<Long,Long>,Pair<Long,Long>> cityPair){
-        Pair<Long,Long> lhs = cityPair.head;
-        Pair<Long,Long> rhs = cityPair.tail;
-        return Math.sqrt(Math.pow(rhs.head-lhs.head,2) + Math.pow(rhs.tail-lhs.tail,2));
-    }
+        for (int i = 0; i < N; ++i){
+            System.out.printf("Stadt %d (%d|%d)\n",i,x[i],y[i]);
+        }
+        System.out.println();
 
-    public static void main(String... args){
-        int N = 4;
-        // Create a List of N random coordinate pairs
-        var listOfCities = IntStream
-        .range(0, N)
-        .mapToObj(t -> new Pair<Long,Long>(Math.round(Math.random()*100),Math.round(Math.random()*100)))
-        .collect(Collectors.toList());
-        
-        /* Create the cartesian product of the list with 
-            itself and calculate pairwise distances.
-        */ 
-        var listOfDistances = cartesianProduct(listOfCities, listOfCities).stream()
-        .map(pair -> new Pair<Pair<Pair<Long,Long>,Pair<Long,Long>>,Double>(pair,distance(pair)))
-        .collect(Collectors.toList());
 
-        // Output
-        listOfDistances.stream()
-        .forEach(p -> System.out.println(p));
+        System.out.print("            ");
+        for (int i = 0; i < N-1; ++i){
+            System.out.printf("Stadt %d  ",i);
+        }
+        System.out.println();
+
+        for (int i = 1; i < N; ++i){
+            System.out.printf("Stadt %d  ",i);
+            for (int j = 0; j < i; ++j){
+                System.out.printf("%9.3f",distance(x[i], y[i], x[j], y[j]));
+            }
+            System.out.println();
+        }
+
     }
 
 }
