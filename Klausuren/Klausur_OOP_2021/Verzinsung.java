@@ -15,7 +15,7 @@ public class Verzinsung {
         int n = 30;
         double K0 = 100000;
         double p = 1.75;
-        double K=K0,Z;
+        double K = K0, Z;
         printRow(20, "Jahr", "Start", "Zinsen", "End");
         for (int j = 1; j <= n; ++j){
             Z = K * p / 100.;
