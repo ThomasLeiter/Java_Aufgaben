@@ -26,11 +26,11 @@ public class Aufgabe_6 {
                 * solange i < inputString . length () laufen.
                 */ 
                 char currentChar = inputString . charAt (i );
-                if( currentChar = c) { // Assignmentoperator = statt Vergleichsoperator ==
+                if( currentChar == c) { // Assignmentoperator = statt Vergleichsoperator ==
                     NUMBER_OF_CHARS ++;
                 }
             }
-            return NUMBER_OF_CHARS // Vergessenes Semikolon
+            return NUMBER_OF_CHARS; // Vergessenes Semikolon
          }
 
     }
