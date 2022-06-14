@@ -1,10 +1,5 @@
 package Klausuren.Klausur_Konzepte_OOP_FOM_Nurnberg_2022_01_13;
 
-import Klausuren.Klausur_Konzepte_OOP_FOM_Nurnberg_2022_01_13.Aufgabe_5.Angestellter;
-import Klausuren.Klausur_Konzepte_OOP_FOM_Nurnberg_2022_01_13.Aufgabe_5.Arbeiter;
-import Klausuren.Klausur_Konzepte_OOP_FOM_Nurnberg_2022_01_13.Aufgabe_5.Manager;
-import Klausuren.Klausur_Konzepte_OOP_FOM_Nurnberg_2022_01_13.Aufgabe_5.Mitarbeiter;
-
 public class Gehaltsberechnung {
     private static final int ANZ_MA = 100;
     private static Mitarbeiter[] ma;
@@ -21,6 +16,8 @@ public class Gehaltsberechnung {
 
         bruttosumme = 0.;
         for (int i = 0; i < ANZ_MA; ++i){
+            if (null == ma[i]) 
+                continue;
             bruttosumme += ma[i].monatsBrutto();
         }
 
